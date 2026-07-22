@@ -1,0 +1,16 @@
+cff-version: 1.2.0
+title: "基于双时相地表变化检测的低空飞行风险分析系统"
+message: "请引用该项目归档时注明团队成员和公开仓库地址。"
+type: software
+date-released: 2025-10-25
+authors:
+  - family-names: "郑"
+    given-names: "梓彬"
+  - family-names: "李"
+    given-names: "维华"
+keywords:
+  - remote sensing
+  - change detection
+  - semantic change detection
+  - low-altitude economy
+  - ChangeFormer

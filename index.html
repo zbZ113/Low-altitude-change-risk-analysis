@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="基于双时相地表变化检测的低空飞行风险分析系统项目归档与成果展示。">
+  <meta name="theme-color" content="#10253f">
+  <title>基于双时相地表变化检测的低空飞行风险分析系统</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js" defer></script>
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到正文</a>
+
+  <header class="site-header" id="top">
+    <div class="header-inner">
+      <a class="brand" href="#top" aria-label="返回顶部">
+        <span class="brand-mark">GUET-B</span>
+        <span class="brand-text">低空飞行风险分析</span>
+      </a>
+      <button class="nav-toggle" type="button" aria-label="打开导航" aria-expanded="false">
+        <i data-lucide="menu" aria-hidden="true"></i>
+      </button>
+      <nav class="site-nav" aria-label="页面导航">
+        <a href="#overview">项目</a>
+        <a href="#technology">技术</a>
+        <a href="#results">结果</a>
+        <a href="#contributions">贡献</a>
+        <a href="#awards">获奖</a>
+        <a href="#materials">材料</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-shade" aria-hidden="true"></div>
+      <div class="hero-content">
+        <p class="eyebrow">第七届中国研究生人工智能创新大赛 · 全国二等奖</p>
+        <h1 id="hero-title">基于双时相地表变化检测的低空飞行风险分析系统</h1>
+        <p class="hero-copy">将双时相遥感图像转化为变化区域、地物语义转移矩阵和可执行的低空运行风险报告，形成从视觉感知到辅助决策的完整链路。</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#results">
+            <i data-lucide="scan-search" aria-hidden="true"></i>
+            查看效果
+          </a>
+          <a class="button button-secondary" href="docs/project-document.pdf">
+            <i data-lucide="presentation" aria-hidden="true"></i>
+            答辩材料
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="metrics-band" aria-label="项目关键数据">
+      <div class="content metrics-grid">
+        <div class="metric"><strong>67.59%</strong><span>变化检测最佳 F1</span></div>
+        <div class="metric"><strong>51.04%</strong><span>变化检测 IoU</span></div>
+        <div class="metric"><strong>6 类</strong><span>地表语义类别</span></div>
+        <div class="metric"><strong>2 项</strong><span>赛事二等奖证明</span></div>
+      </div>
+    </section>
+
+    <section class="section" id="overview">
+      <div class="content two-column intro-layout">
+        <div>
+          <p class="section-label">Project</p>
+          <h2>低成本、可解释的航线环境体检</h2>
+          <p>低空航线和起降区域会持续受到新增建筑、水体扩张、地表硬化和植被变化影响。系统使用同一区域不同时间的遥感图像，识别“哪里发生变化”，并进一步判断“从什么地物变成什么地物”。</p>
+          <p>变化结果被压缩为语义转移矩阵，再结合低空运行安全规则交给大语言模型分析，最终输出隐患证据、风险等级和处置建议。</p>
+        </div>
+        <figure class="media-frame image-openable" tabindex="0" data-full="assets/solution-flow.png">
+          <img src="assets/solution-flow.png" alt="系统总体方案：双时相图像经过模型得到语义分割和转移矩阵，再由大语言模型分析风险">
+          <figcaption>视觉感知、矩阵化表达与风险推理的总体流程</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section section-ink" id="technology">
+      <div class="content">
+        <p class="section-label">Engineering</p>
+        <h2>三任务联合建模</h2>
+        <div class="feature-grid">
+          <article class="feature-item">
+            <i data-lucide="split" aria-hidden="true"></i>
+            <h3>三分支输出</h3>
+            <p>复用 ChangeFormerV6 孪生 Transformer 编码器，同时输出二值变化图、T1 语义图和 T2 语义图。</p>
+          </article>
+          <article class="feature-item">
+            <i data-lucide="waypoints" aria-hidden="true"></i>
+            <h3>跨时相特征增强</h3>
+            <p>在 C4 高层特征引入空间与通道注意力，并显式编码像素差异，强化难例区域的变化表征。</p>
+          </article>
+          <article class="feature-item">
+            <i data-lucide="layers-3" aria-hidden="true"></i>
+            <h3>多尺度残差融合</h3>
+            <p>对齐四级特征后进行通道融合与残差回写，为变化解码器和双语义头提供共享信息。</p>
+          </article>
+          <article class="feature-item">
+            <i data-lucide="file-chart-column" aria-hidden="true"></i>
+            <h3>工程化输出</h3>
+            <p>PyQt5 GUI 集成阈值调节、形态学后处理、转移矩阵、面积统计、LLM 分析和 PDF 报告。</p>
+          </article>
+        </div>
+        <figure class="architecture image-openable" tabindex="0" data-full="assets/model-architecture.png">
+          <img src="assets/model-architecture.png" alt="MultiTaskChangeFormer 多任务网络模型架构图">
+          <figcaption>MultiTaskChangeFormer 详细网络结构</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section" id="results">
+      <div class="content">
+        <p class="section-label">Results</p>
+        <h2>从像素变化到风险报告</h2>
+        <div class="result-grid">
+          <figure class="result-main image-openable" tabindex="0" data-full="assets/results.png">
+            <img src="assets/results.png" alt="双时相输入、语义分割结果和变化转移矩阵">
+            <figcaption>变化区域语义分割与转移矩阵</figcaption>
+          </figure>
+          <figure class="image-openable" tabindex="0" data-full="assets/risk-report.png">
+            <img src="assets/risk-report.png" alt="系统自动生成的低空飞行风险分析报告示例">
+            <figcaption>规则约束下的 LLM 风险分析</figcaption>
+          </figure>
+          <figure class="image-openable" tabindex="0" data-full="assets/applications.png">
+            <img src="assets/applications.png" alt="航线体检、低空保险和城市治理应用场景">
+            <figcaption>航线体检、保险评估与低空治理</figcaption>
+          </figure>
+        </div>
+        <div class="report-callout">
+          <div>
+            <h3>可复核的系统报告</h3>
+            <p>示例报告保留双时相输入、变化概率、语义结果、转移矩阵、热力图与分析文本，便于人工复核。</p>
+          </div>
+          <a class="button button-dark" href="docs/sample-report.pdf">
+            <i data-lucide="file-down" aria-hidden="true"></i>
+            查看报告样例
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-soft" id="contributions">
+      <div class="content contribution-layout">
+        <div>
+          <p class="section-label">Contribution Evidence</p>
+          <h2>个人贡献与证据边界</h2>
+          <p>本仓库用于公开展示团队项目的技术方案、实验结果、工程材料与获奖证明，不披露团队成员姓名，也不主张对 ChangeFormer 原始实现拥有独占权。</p>
+        </div>
+        <div class="evidence-list">
+          <div class="evidence-row"><span>模型实现</span><code>src/model.py</code></div>
+          <div class="evidence-row"><span>训练与评测</span><code>src/train.py · src/val_sec.py</code></div>
+          <div class="evidence-row"><span>GUI 与报告</span><code>src/gui_ai.py</code></div>
+          <div class="evidence-row"><span>决赛交付材料</span><code>docs/project-document.pdf</code></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="awards">
+      <div class="content">
+        <p class="section-label">Awards</p>
+        <h2>获奖证明</h2>
+        <div class="award-grid">
+          <article class="award-card">
+            <button class="award-image image-openable" type="button" data-full="docs/award-national.png" aria-label="放大全国二等奖证书">
+              <img src="docs/award-national.png" alt="第七届中国研究生人工智能创新大赛二等奖证书">
+            </button>
+            <div class="award-body">
+              <p class="award-level">全国赛</p>
+              <h3>第七届中国研究生人工智能创新大赛二等奖</h3>
+              <a class="text-link" href="docs/award-national.png">查看证书图片 <i data-lucide="external-link" aria-hidden="true"></i></a>
+            </div>
+          </article>
+          <article class="award-card">
+            <button class="award-image image-openable" type="button" data-full="docs/award-qingdao.png" aria-label="放大青岛专项二等奖证书">
+              <img src="docs/award-qingdao.png" alt="第七届中国研究生人工智能创新大赛青岛市赛题专项二等奖证书">
+            </button>
+            <div class="award-body">
+              <p class="award-level">地方专项</p>
+              <h3>青岛市赛题专项二等奖</h3>
+              <a class="text-link" href="docs/award-qingdao.png">查看证书图片 <i data-lucide="external-link" aria-hidden="true"></i></a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-ink" id="materials">
+      <div class="content">
+        <p class="section-label">Archive</p>
+        <h2>项目材料</h2>
+        <div class="material-list">
+          <a href="docs/project-document.pdf"><i data-lucide="file-text" aria-hidden="true"></i><span><strong>项目文档</strong><small>背景、技术方案、创新点与实施细节</small></span><i data-lucide="download" aria-hidden="true"></i></a>
+          <a href="docs/sample-report.pdf"><i data-lucide="file-chart-column" aria-hidden="true"></i><span><strong>报告样例</strong><small>GUI 自动生成的 7 页分析报告</small></span><i data-lucide="download" aria-hidden="true"></i></a>
+          <a href="README.md"><i data-lucide="code-xml" aria-hidden="true"></i><span><strong>源码说明</strong><small>目录结构、环境依赖与运行方式</small></span><i data-lucide="arrow-right" aria-hidden="true"></i></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="content footer-inner">
+      <p>GUET-B · 桂林电子科技大学 · 2025</p>
+      <p>团队项目归档 · 桂林电子科技大学 · 2025</p>
+    </div>
+  </footer>
+
+  <dialog class="image-dialog" aria-label="图片预览">
+    <button class="dialog-close" type="button" aria-label="关闭图片预览"><i data-lucide="x" aria-hidden="true"></i></button>
+    <img src="" alt="">
+  </dialog>
+</body>
+</html>
