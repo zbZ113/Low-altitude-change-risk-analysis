@@ -1,18 +1,18 @@
 # 基于双时相地表变化检测的低空飞行风险分析系统
 
-GUET-B 团队项目归档。系统面向低空航线与起降区域的环境变化核验，将双时相遥感图像转换为变化检测结果、地物语义转移矩阵和低空运行风险分析报告。
+系统面向低空航线与起降区域的环境变化核验，将双时相遥感图像转换为变化检测结果、地物语义转移矩阵和低空运行风险分析报告。
 
-[打开项目展示页](index.html) · [查看项目文档](docs/project-document.pdf) · [查看获奖证明](#获奖与证据)
+[查看项目文档](docs/project-document.pdf) · [查看获奖证明](#获奖与证据)
 
 ## 项目概览
 
 - 任务：变化检测 + T1/T2 双时相语义分割 + 地物转移分析
 - 主干：基于 ChangeFormerV6 的 Siamese Transformer 编码器
 - 工程：PyTorch、Albumentations、PyQt5、Matplotlib、ReportLab
-- 语言模型：OpenAI 兼容接口，可接入 SiliconFlow、OpenAI、DeepSeek 或自定义服务
-- 数据：SECOND 语义变化检测数据集，源码不附带数据与训练权重
+- 语言模型：可接入 SiliconFlow、DeepSeek 或自定义服务
+- 数据：SECOND 语义变化检测数据集
 
-当前归档中的验证结果：最佳 F1 0.6759、变化 IoU 0.5104、T1 mIoU 0.4636、T2 mIoU 0.5379、SeK 0.5459。指标来自 `地表检测与类型识别\dome\outputs\validation` 中的验证记录。
+当前归档中的验证结果：最佳 F1 0.6759、变化 IoU 0.5104、T1 mIoU 0.4636、T2 mIoU 0.5379、SeK 0.5459。
 
 ## 模型结构
 
@@ -30,7 +30,6 @@ assets/       页面使用的模型图、效果图和证书预览
 docs/         项目文档、答辩 PDF、报告样例、获奖证书
 src/          最终集成版核心源码
 third_party/  ChangeFormer 上游许可证
-index.html    GitHub Pages 静态展示页
 ```
 
 ## 本地运行
@@ -46,18 +45,12 @@ python src/gui_ai.py
 
 GUI 默认读取 `outputs/checkpoints/best_model.pth`，也支持在界面中重新选择图像、权重和中文字体。LLM 分析需要用户在界面中提供 API Key；仓库不包含任何密钥。
 
-由于数据集和权重体积较大，公开仓库只提供源码、文档和可复核的结果图，不提供完整训练数据或 `.pth` 文件。
-
 ## 获奖与证据
 
 - “华为杯”第七届中国研究生人工智能创新大赛全国二等奖：[`docs/award-national.png`](docs/award-national.png)
 - 青岛市赛题专项二等奖：[`docs/award-qingdao.png`](docs/award-qingdao.png)
 - 决赛项目文档：[`docs/project-document.pdf`](docs/project-document.pdf)
 - 公开说明：本仓库仅展示项目技术材料、实验结果与获奖证明，不披露团队成员姓名。
-
-## 贡献说明
-
-本项目为团队参赛作品。本仓库用于公开展示项目技术材料、实验结果与获奖证明，不披露团队成员姓名，也不将团队成果包装成个人独立完成。
 
 ## 第三方说明
 
