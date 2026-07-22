@@ -50,7 +50,6 @@ GUI 默认读取 `outputs/checkpoints/best_model.pth`，也支持在界面中重
 - “华为杯”第七届中国研究生人工智能创新大赛全国二等奖：[`docs/award-national.png`](docs/award-national.png)
 - 青岛市赛题专项二等奖：[`docs/award-qingdao.png`](docs/award-qingdao.png)
 - 决赛项目文档：[`docs/project-document.pdf`](docs/project-document.pdf)
-- 公开说明：本仓库仅展示项目技术材料、实验结果与获奖证明，不披露团队成员姓名。
 
 ## 第三方说明
 
