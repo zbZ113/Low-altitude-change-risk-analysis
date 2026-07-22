@@ -23,6 +23,8 @@
 3. `abs(im1 - im2)` 差异编码器和 C4 残差融合。
 4. 四级特征对齐、共享融合与双时相残差回写。
 
+![MultiTaskChangeFormer 创新结构示意图](assets/innovation.png)
+
 ## 目录
 
 ```text
