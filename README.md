@@ -43,7 +43,7 @@ python src/val_sec.py --help
 python src/gui_ai.py
 ```
 
-GUI 默认读取 `outputs/checkpoints/best_model.pth`，也支持在界面中重新选择图像、权重和中文字体。LLM 分析需要用户在界面中提供 API Key；仓库不包含任何密钥。
+GUI 默认读取 `outputs/checkpoints/best_model.pth`，也支持在界面中重新选择图像、权重和中文字体。LLM 分析需要用户在界面中提供 API Key。
 
 ## 获奖与证据
 
